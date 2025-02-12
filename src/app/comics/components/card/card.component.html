@@ -1,0 +1,35 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>{{ comic.title }}</mat-card-title>
+    <button mat-icon-button (click)="toggleFavorite()">
+      <mat-icon [color]="isFavorite() ? 'primary' : ''">
+        {{ isFavorite() ? 'favorite' : 'favorite_border' }}
+      </mat-icon>
+    </button>
+  </mat-card-header>
+
+  <img mat-card-image [src]="comic.thumbnail.path + '.' + comic.thumbnail.extension" [alt]="comic.title">
+
+  <mat-card-content class="mt-2">
+    <p><strong>Formato:</strong> {{ comic.format }}</p>
+    <p><strong>Publicación:</strong> {{ comic.dates[0].date | date }}</p>
+    <mat-chip-listbox>
+      <mat-chip *ngFor="let creator of comic.creators.items.slice(0, 3)">
+        {{ creator.name }} ({{ creator.role }})
+      </mat-chip>
+    </mat-chip-listbox>
+  </mat-card-content>
+
+  <mat-divider></mat-divider>
+
+  <mat-card-actions>
+    <button mat-button
+            mat-raised
+             color="primary"
+            [routerLink]="['/comics', comic.id ]">
+      <mat-icon>visibility</mat-icon> Ver Detalles
+    </button>
+
+   
+  </mat-card-actions>
+</mat-card>

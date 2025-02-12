@@ -1,0 +1,38 @@
+<form [formGroup]="registerForm" (ngSubmit)="onRegister()" class="flex flex-column">
+
+  <span class="text-lg mb-4">Registro</span>
+
+  <mat-form-field>
+    <mat-label>Identificación</mat-label>
+    <input type="text" matInput formControlName="id" placeholder="Número de identificación">
+    <mat-error *ngIf="registerForm.get('id')?.invalid">Este campo es obligatorio</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Email</mat-label>
+    <input type="email" matInput formControlName="email" placeholder="Correo electrónico">
+    <mat-error *ngIf="registerForm.get('email')?.invalid">Ingrese un correo válido</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Nombre</mat-label>
+    <input type="text" matInput formControlName="name" placeholder="Nombre completo">
+    <mat-error *ngIf="registerForm.get('name')?.invalid">Este campo es obligatorio</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Contraseña</mat-label>
+    <input type="password" matInput formControlName="password" placeholder="Contraseña">
+    <mat-error *ngIf="registerForm.get('password')?.invalid">Debe tener al menos 6 caracteres</mat-error>
+  </mat-form-field>
+
+  <button mat-button mat-flat-button color="primary" [disabled]="registerForm.invalid">
+    <mat-icon>save</mat-icon>
+    Crear cuenta
+  </button>
+
+  <div class="flex justify-content-end mt-5">
+    <a routerLink="/auth/login">¿Ya tienes cuenta?</a>
+  </div>
+
+</form>

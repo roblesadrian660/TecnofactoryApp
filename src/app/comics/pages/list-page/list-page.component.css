@@ -1,0 +1,21 @@
+mat-card {
+  width: 100%;
+  margin: 10px;
+}
+
+  mat-card img {
+    height: 250px;
+    object-fit: cover;
+  }
+
+mat-chip {
+  margin: 2px;
+}
+
+
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; 
+}

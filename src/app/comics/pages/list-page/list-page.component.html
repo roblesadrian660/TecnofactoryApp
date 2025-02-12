@@ -1,0 +1,15 @@
+<ng-template #divLoading>
+  <div class="loading-container">
+    <mat-spinner></mat-spinner>
+  </div>
+</ng-template>
+
+<div *ngIf="comics; else divLoading" class="grid p-2">
+  <h1>Listado de Cómics</h1>
+
+  <div class="grid bm-8 pt-2">
+    <div *ngFor="let comic of comics" class="col-12 sm:col-4 md:col-3 xl:col-2">
+      <app-comic-card [comic]="comic"></app-comic-card>
+    </div>
+  </div>
+</div>

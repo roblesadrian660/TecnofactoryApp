@@ -1,0 +1,42 @@
+<ng-template #divLoading>
+  <mat-grid-list cols="1">
+    <mat-grid-tile>
+      <mat-spinner></mat-spinner>
+    </mat-grid-tile>
+  </mat-grid-list>
+</ng-template>
+
+<div *ngIf="comic; else divLoading" class="grid p-2">
+  <mat-card class="col-12 sm:col-6">
+    <mat-card-header>
+      <mat-card-title>{{ comic.title }}</mat-card-title>
+      <mat-card-subtitle>#{{ comic.issueNumber }}</mat-card-subtitle>
+    </mat-card-header>
+
+    <img [src]="comic.thumbnail.path + '.' + comic.thumbnail.extension"
+         [alt]="comic.title" mat-card-image />
+  </mat-card>
+
+  <mat-card class="col-12 sm:col-6">
+    <mat-card-header>
+      <mat-card-title>Información</mat-card-title>
+      <mat-card-subtitle>{{ comic.title }}</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+      <mat-list>
+        <mat-list-item *ngIf="comic.description">{{ comic.description }}</mat-list-item>
+        <mat-list-item>Publicación: {{ comic.dates[0].date | date:'longDate' }}</mat-list-item>
+        <mat-list-item>Formato: {{ comic.format }}</mat-list-item>
+        <mat-list-item *ngIf="comic.creators.items.length">
+          Creadores: {{ getCreators() }}
+        </mat-list-item>
+
+      </mat-list>
+
+      <button mat-button color="warn" (click)="goBack()">
+        Regresar
+      </button>
+    </mat-card-content>
+  </mat-card>
+</div>
